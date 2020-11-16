@@ -1,0 +1,11 @@
+package e
+
+const (
+	SUCCESS         = 200
+	ERROR           = 500
+	INVALID_PARAMS  = 400
+	ALREADY_EXISTS  = 600
+	TREE_NOT_EXISTS = 601
+	UPDATE_FAILED   = 602
+	REMOVE_FAILED   = 603
+)
