@@ -12,6 +12,8 @@ func main() {
 	r := gin.Default()
 
 	routers.Init()
+
+	//访问http://localhost:8080/swagger/index.html查看接口文档
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	r.POST("/create", routers.CreateTree)
