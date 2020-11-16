@@ -1,0 +1,190 @@
+definitions:
+  app.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+  routers.Tree:
+    properties:
+      id:
+        type: integer
+      key_array:
+        items:
+          type: string
+        type: array
+      order:
+        type: integer
+      val_array:
+        items:
+          type: string
+        type: array
+    required:
+    - id
+    - key_array
+    - order
+    - val_array
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /Remove:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      - description: B+树的key
+        in: formData
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/app.Response'
+        "404":
+          description: 删除失败
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Remove a B Plus Tree Key and Value
+  /create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: B+树结构
+        in: body
+        name: t
+        required: true
+        schema:
+          $ref: '#/definitions/routers.Tree'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/app.Response'
+        "404":
+          description: 创建失败
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Create a B Plus Tree
+  /get:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      - description: B+树的key
+        in: formData
+        name: key
+        required: true
+        type: string
+      responses:
+        "200":
+          description: key对应的value
+          schema:
+            type: string
+        "400":
+          description: 错误信息
+          schema:
+            type: string
+      summary: Get a B Plus Tree Key and Value
+  /marshal:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: B+树的序列化信息
+          schema:
+            type: string
+        "400":
+          description: 错误信息
+          schema:
+            type: string
+      summary: Serialized B Plus Tree Struct
+  /show:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: B+树的结构
+          schema:
+            type: string
+        "400":
+          description: B+树不存在
+          schema:
+            type: string
+      summary: Show the B Plus Tree
+  /travel:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: B+树的叶子节点遍历信息
+          schema:
+            type: string
+        "400":
+          description: 错误信息
+          schema:
+            type: string
+      summary: Traversing leaf nodes of B Plus Tree
+  /update:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      - description: B+树的key
+        in: formData
+        name: key
+        required: true
+        type: string
+      - description: B+树的value
+        in: formData
+        name: val
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 修改成功
+          schema:
+            $ref: '#/definitions/app.Response'
+        "404":
+          description: 修改失败
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Update a B Plus Tree Key and Value
+swagger: "2.0"
