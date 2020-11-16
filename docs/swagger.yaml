@@ -32,31 +32,6 @@ info:
   contact: {}
   license: {}
 paths:
-  /Remove:
-    post:
-      parameters:
-      - description: B+树id
-        in: formData
-        name: id
-        required: true
-        type: integer
-      - description: B+树的key
-        in: formData
-        name: key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 删除成功
-          schema:
-            $ref: '#/definitions/app.Response'
-        "404":
-          description: 删除失败
-          schema:
-            $ref: '#/definitions/app.Response'
-      summary: Remove a B Plus Tree Key and Value
   /create:
     post:
       consumes:
@@ -121,6 +96,31 @@ paths:
           schema:
             type: string
       summary: Serialized B Plus Tree Struct
+  /remove:
+    post:
+      parameters:
+      - description: B+树id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      - description: B+树的key
+        in: formData
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/app.Response'
+        "404":
+          description: 删除失败
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Remove a B Plus Tree Key and Value
   /show:
     post:
       parameters:

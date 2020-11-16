@@ -5,44 +5,6 @@
         "license": {}
     },
     "paths": {
-        "/Remove": {
-            "post": {
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "Remove a B Plus Tree Key and Value",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "B+树id",
-                        "name": "id",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "B+树的key",
-                        "name": "key",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "删除成功",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    },
-                    "404": {
-                        "description": "删除失败",
-                        "schema": {
-                            "$ref": "#/definitions/app.Response"
-                        }
-                    }
-                }
-            }
-        },
         "/create": {
             "post": {
                 "consumes": [
@@ -137,6 +99,44 @@
                         "description": "错误信息",
                         "schema": {
                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/remove": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Remove a B Plus Tree Key and Value",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "B+树id",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "B+树的key",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "删除失败",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
                         }
                     }
                 }

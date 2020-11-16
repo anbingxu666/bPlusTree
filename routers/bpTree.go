@@ -116,7 +116,7 @@ func Update(c *gin.Context) {
 // @Param key formData string true "B+树的key"
 // @Success 200 {object} app.Response "删除成功"
 // @Failure 404 {object} app.Response "删除失败"
-// @Router /Remove [post]
+// @Router /remove [post]
 func Remove(c *gin.Context) {
 	appG := app.Gin{C: c}
 	id, _ := strconv.Atoi(c.PostForm("id"))
